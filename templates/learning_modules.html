@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Learn & Prepare{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <!-- Sidebar with functional navigation icons -->
+    <div class="sidebar">
+        <a href="{{ url_for('learning_modules') }}" class="sidebar-icon active">
+            <svg class="sidebar-svg book-icon" viewBox="0 0 24 24">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20v-2H6.5A4.5 4.5 0 0 0 2 19.5V22h2v-2.5zM6.5 2C4.57 2 3 3.57 3 5.5v9c0 1.93 1.57 3.5 3.5 3.5H18v-12H6.5zm0 13c-.83 0-1.5-.67-1.5-1.5v-9C5 3.67 5.67 3 6.5 3H16v12H6.5z"/>
+            </svg>
+        </a>
+        <a href="#" class="sidebar-icon">
+            <svg class="sidebar-svg chart-icon" viewBox="0 0 24 24">
+                <path d="M9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17ZM19 19H5V5H19V19ZM19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"/>
+            </svg>
+        </a>
+        <a href="#" class="sidebar-icon">
+            <svg class="sidebar-svg calendar-icon" viewBox="0 0 24 24">
+                <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19ZM7 10H12V15H7V10Z"/>
+            </svg>
+        </a>
+        <a href="{{ url_for('welcome') }}" class="sidebar-icon">
+            <svg class="sidebar-svg user-icon" viewBox="0 0 24 24">
+                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/>
+            </svg>
+        </a>
+    </div>
+    
+    <div class="step-container">
+        <div class="header-section">
+            <h2>Learn & Prepare</h2>
+            <p>Building psychological safety</p>
+        </div>
+        
+        <div class="video-player">
+            <div class="play-button">
+                <div class="play-icon">▶</div>
+            </div>
+        </div>
+        
+        <div class="module-info">
+            <div class="module-title">Module 1: Creating a Safe Environment</div>
+            <div class="module-progress">1 of 3</div>
+        </div>
+        
+        <div class="takeaways-box">
+            <p class="section-title">Key takeaways:</p>
+            <ul class="takeaways-list">
+                <li>Validate feelings before moving to solutions</li>
+                <li>Watch for non-verbal clues</li>
+            </ul>
+        </div>
+        
+        <div class="resources-box">
+            <p class="section-title">Resources</p>
+            <div class="resource-item">
+                <input type="checkbox" id="resource1" class="resource-checkbox">
+                <label for="resource1">Safety Assessment Worksheet</label>
+            </div>
+            <div class="resource-item">
+                <input type="checkbox" id="resource2" class="resource-checkbox">
+                <label for="resource2">Psychological safety discussion questionnaire</label>
+            </div>
+        </div>
+        
+        <form method="POST" action="{{ url_for('learning_modules') }}">
+            <button type="submit" name="complete_module" value="true" class="complete-module-btn">Complete module</button>
+        </form>
+    </div>
+</div>
+{% endblock %} 

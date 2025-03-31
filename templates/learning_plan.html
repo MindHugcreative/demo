@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Learning Plan{% endblock %}
+
+{% block content %}
+<div class="step-container">
+    <div class="header-section">
+        <h2>Learning Plan</h2>
+        <p>Select areas where your client is struggling</p>
+    </div>
+    
+    <div class="success-message">
+        <p class="success-title">Module added successfully</p>
+        <p class="success-details">Building Psychological safety has been added to your learning plan</p>
+    </div>
+    
+    <div class="next-steps-box">
+        <p class="next-steps-title">What would you like to do next?</p>
+        
+        <form method="POST" action="{{ url_for('learning_modules') }}">
+            <button type="submit" class="action-button">
+                <span class="action-text">Start learning module now</span>
+                <span class="action-icon">▶</span>
+            </button>
+        </form>
+        
+        <button class="action-button save-button">
+            <span class="action-text">Save for later</span>
+            <span class="action-icon">🔖</span>
+        </button>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Action Plan{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <!-- Sidebar with icons -->
+    <div class="sidebar">
+        <div class="sidebar-icon"><span>📖</span></div>
+        <div class="sidebar-icon"><span>📊</span></div>
+        <div class="sidebar-icon"><span>📅</span></div>
+        <div class="sidebar-icon"><span>👤</span></div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="client-header">
+            <div class="client-avatar large">⊙</div>
+            <h2 class="client-header-name">Sarah Johnson</h2>
+        </div>
+        
+        <div class="module-reference">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p>Based on Module: Psychological safety</p>
+        </div>
+        
+        <div class="action-plan-section">
+            <h2>Action plan</h2>
+            <p class="action-subtitle">Prepare to apply what you've learned with your client</p>
+            
+            <form method="POST" action="{{ url_for('save_action_plan') }}">
+                <div class="technique-box">
+                    <input type="checkbox" id="technique1" name="technique" value="recognition_validation" checked>
+                    <label for="technique1">Safety technique: Recognition and validation</label>
+                </div>
+                
+                <div class="adaptation-box">
+                    <label for="adaptation">How will you adapt this to your client?</label>
+                    <textarea id="adaptation" name="adaptation" rows="4" placeholder="I'll focus on validating their concerns about team dynamics before moving to solutions"></textarea>
+                </div>
+                
+                <div class="implementation-box">
+                    <label for="implementation">When will you implement this?</label>
+                    <select id="implementation" name="implementation">
+                        <option value="3-april">3 April</option>
+                        <option value="7-april">7 April</option>
+                        <option value="14-april">14 April</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="save-plan-btn">Save Action plan</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Session Notes - MindHug{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <!-- Sidebar with icons -->
+    <div class="sidebar">
+        <div class="sidebar-icon"><span>📖</span></div>
+        <div class="sidebar-icon"><span>📊</span></div>
+        <div class="sidebar-icon"><span>📅</span></div>
+        <div class="sidebar-icon"><span>👤</span></div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Completed session notification -->
+        <div id="session-complete" class="session-complete">
+            <h2>Completed session!</h2>
+            <button id="take-notes-btn" class="take-notes-button">Take notes</button>
+        </div>
+        
+        <!-- Session notes form (initially hidden) -->
+        <div id="notes-form" class="notes-form" style="display: none;">
+            <!-- User profile -->
+            <div class="user-profile">
+                <div class="user-avatar">⊙</div>
+                <h2 class="user-name">George Miles</h2>
+            </div>
+            
+            <!-- Session notes -->
+            <div class="session-notes">
+                <h2>Session Notes</h2>
+                <p>Record your observations from the coaching session</p>
+                
+                <form method="POST" action="{{ url_for('welcome') }}">
+                    <textarea name="notes" placeholder="Enter your session notes here">{{ session.get('notes', '') }}</textarea>
+                    
+                    <button type="submit" class="continue-button">Continue</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to handle the interaction -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sessionComplete = document.getElementById('session-complete');
+    const notesForm = document.getElementById('notes-form');
+    const takeNotesBtn = document.getElementById('take-notes-btn');
+    
+    takeNotesBtn.addEventListener('click', function() {
+        sessionComplete.style.display = 'none';
+        notesForm.style.display = 'block';
+    });
+});
+</script>
+{% endblock %} 

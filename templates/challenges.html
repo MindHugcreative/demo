@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Coaching Challenges{% endblock %}
+
+{% block content %}
+<div class="step-container">
+    <div class="header-section">
+        <h2>Coaching Challenges</h2>
+        <p>Select areas where your client is struggling</p>
+    </div>
+    
+    <form method="POST" action="{{ url_for('challenges') }}">
+        <div class="challenges-grid">
+            <div class="challenge-column">
+                <div class="challenge-category">Safety</div>
+                <div class="challenge-card {% if session.selected_challenge == 'safety' %}selected{% endif %}">
+                    <input type="radio" name="challenge" value="safety" id="safety" {% if session.selected_challenge == 'safety' %}checked{% endif %}>
+                    <label for="safety">
+                        <p>Building psychological safety</p>
+                    </label>
+                </div>
+                
+                <div class="challenge-category">Reframing</div>
+                <div class="challenge-card {% if session.selected_challenge == 'reframing' %}selected{% endif %}">
+                    <input type="radio" name="challenge" value="reframing" id="reframing" {% if session.selected_challenge == 'reframing' %}checked{% endif %}>
+                    <label for="reframing">
+                        <p>Shifting perspectives</p>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="challenge-column">
+                <div class="challenge-category">Understanding</div>
+                <div class="challenge-card {% if session.selected_challenge == 'understanding' %}selected{% endif %}">
+                    <input type="radio" name="challenge" value="understanding" id="understanding" {% if session.selected_challenge == 'understanding' %}checked{% endif %}>
+                    <label for="understanding">
+                        <p>Guiding to comprehension</p>
+                    </label>
+                </div>
+                
+                <div class="challenge-category">Experience</div>
+                <div class="challenge-card {% if session.selected_challenge == 'experience' %}selected{% endif %}">
+                    <input type="radio" name="challenge" value="experience" id="experience" {% if session.selected_challenge == 'experience' %}checked{% endif %}>
+                    <label for="experience">
+                        <p>Learning through new ways of doing</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button type="submit" class="analyse-button">Analyse and find resources</button>
+        </div>
+    </form>
+</div>
+{% endblock %} 

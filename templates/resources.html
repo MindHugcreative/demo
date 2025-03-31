@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Recommended Resources{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <!-- Sidebar with functional navigation icons -->
+    <div class="sidebar">
+        <a href="{{ url_for('learning_modules') }}" class="sidebar-icon">
+            <svg class="sidebar-svg book-icon" viewBox="0 0 24 24">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20v-2H6.5A4.5 4.5 0 0 0 2 19.5V22h2v-2.5zM6.5 2C4.57 2 3 3.57 3 5.5v9c0 1.93 1.57 3.5 3.5 3.5H18v-12H6.5zm0 13c-.83 0-1.5-.67-1.5-1.5v-9C5 3.67 5.67 3 6.5 3H16v12H6.5z"/>
+            </svg>
+        </a>
+        <a href="#" class="sidebar-icon">
+            <svg class="sidebar-svg chart-icon" viewBox="0 0 24 24">
+                <path d="M9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17ZM19 19H5V5H19V19ZM19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"/>
+            </svg>
+        </a>
+        <a href="#" class="sidebar-icon">
+            <svg class="sidebar-svg calendar-icon" viewBox="0 0 24 24">
+                <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19ZM7 10H12V15H7V10Z"/>
+            </svg>
+        </a>
+        <a href="{{ url_for('welcome') }}" class="sidebar-icon">
+            <svg class="sidebar-svg user-icon" viewBox="0 0 24 24">
+                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/>
+            </svg>
+        </a>
+    </div>
+    
+    <div class="main-content">
+        <div class="header-section">
+            <h2>Recommended resources</h2>
+            <p>Based on your selection: <span class="selection-highlight">Safety</span></p>
+        </div>
+        
+        <div class="resource-section">
+            <h3>Techniques for immediate application:</h3>
+            
+            <div class="technique-card">
+                <div class="technique-info">
+                    <h4>Establishing psychological boundaries</h4>
+                    <a href="#" class="view-link">View technique</a>
+                </div>
+                <div class="technique-meta">
+                    <span class="duration">15 min</span>
+                    <button class="favorite-btn">♡</button>
+                </div>
+            </div>
+            
+            <div class="technique-card">
+                <div class="technique-info">
+                    <h4>Emotional validation framework</h4>
+                    <a href="#" class="view-link">View technique</a>
+                </div>
+                <div class="technique-meta">
+                    <span class="duration">15 min</span>
+                    <button class="favorite-btn">♡</button>
+                </div>
+            </div>
+            
+            <div class="technique-card">
+                <div class="technique-info">
+                    <h4>Creating safe psychological spaces</h4>
+                    <a href="#" class="view-link">View technique</a>
+                </div>
+                <div class="technique-meta">
+                    <span class="duration">15 min</span>
+                    <button class="favorite-btn">♡</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="resource-section">
+            <h3>Learning modules to enhance your skills</h3>
+            
+            <div class="adjustable-module-card">
+                <div class="module-title">
+                    <h4>Building psychological safety</h4>
+                </div>
+                <div class="module-description">
+                    <p>Module on creating psychological safety in coaching relationships</p>
+                </div>
+                <div class="module-meta">
+                    <div class="module-stats">
+                        <span class="videos-count">3 videos</span>
+                        <span class="duration">2 hours</span>
+                    </div>
+                    <form method="POST" action="{{ url_for('learning_plan') }}">
+                        <input type="hidden" name="selected_module" value="safety">
+                        <button type="submit" class="add-plan-btn">Add to my learning plan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

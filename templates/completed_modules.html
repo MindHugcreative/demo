@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Learning - Completed Modules{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <!-- Sidebar with icons -->
+    <div class="sidebar">
+        <div class="sidebar-icon active"><span>📖</span></div>
+        <div class="sidebar-icon"><span>📊</span></div>
+        <div class="sidebar-icon"><span>📅</span></div>
+        <div class="sidebar-icon"><span>👤</span></div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="header-section">
+            <h2>Learning</h2>
+            <p>Recently completed modules</p>
+        </div>
+        
+        <div class="completed-module-card">
+            <div class="module-details">
+                <h3>Building psychological safety</h3>
+                <p>Module on creating safety in coaching relationships</p>
+                <button id="use-in-session-btn" class="use-session-btn">Use in session</button>
+            </div>
+            <div class="module-stats">
+                <div class="stat-item">3 videos</div>
+                <div class="stat-item">2 hours</div>
+                <div class="stat-item">Last: last day</div>
+            </div>
+        </div>
+        
+        <div class="header-section" style="margin-top: 30px;">
+            <h3>Recommended modules</h3>
+        </div>
+        
+        <div class="recommended-module-card">
+            <div class="module-details">
+                <h3>Cognitive reframing techniques</h3>
+                <p>Methods for challenging cognitive distortions and negative thought patterns</p>
+                <button class="add-plan-btn small">Add to learning plan</button>
+            </div>
+            <div class="module-stats">
+                <div class="stat-item">2 videos</div>
+                <div class="stat-item">1 hour</div>
+                <div class="stat-item">5 worksheets</div>
+            </div>
+        </div>
+        
+        <!-- Client Selection Popup (initially hidden) -->
+        <div id="client-popup" class="client-popup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3>Choose client</h3>
+                    <button id="close-popup" class="close-popup">✖</button>
+                </div>
+                
+                <div class="client-grid">
+                    <div class="client-card" data-client-id="1">
+                        <div class="client-info">
+                            <div class="client-avatar">⊙</div>
+                            <div class="client-name">Sarah Johnson</div>
+                            <div class="client-course">Anxiety Management</div>
+                        </div>
+                    </div>
+                    <div class="client-card" data-client-id="2">
+                        <div class="client-info">
+                            <div class="client-avatar">⊙</div>
+                            <div class="client-name">Michael Chen</div>
+                            <div class="client-course">Stress Resilience</div>
+                        </div>
+                    </div>
+                    <div class="client-card" data-client-id="3">
+                        <div class="client-info">
+                            <div class="client-avatar">⊙</div>
+                            <div class="client-name">Aisha Patel</div>
+                            <div class="client-course">Emotional Intelligence</div>
+                        </div>
+                    </div>
+                    <div class="client-card" data-client-id="4">
+                        <div class="client-info">
+                            <div class="client-avatar">⊙</div>
+                            <div class="client-name">Thomas García</div>
+                            <div class="client-course">Burnout Prevention</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form method="POST" action="{{ url_for('create_action_plan') }}">
+                    <input type="hidden" id="selected-client" name="selected_client" value="">
+                    <button type="submit" id="create-plan-btn" class="create-plan-btn" disabled>Create action plan</button>
+                </form>
+                
+                <div class="popup-footer">
+                    <div class="module-stats small">
+                        <div class="stat-item">1 hour</div>
+                        <div class="stat-item">5 worksheets</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to handle interactions -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const useInSessionBtn = document.getElementById('use-in-session-btn');
+    const clientPopup = document.getElementById('client-popup');
+    const closePopup = document.getElementById('close-popup');
+    const clientCards = document.querySelectorAll('.client-card');
+    const selectedClientInput = document.getElementById('selected-client');
+    const createPlanBtn = document.getElementById('create-plan-btn');
+    
+    // Show popup when "Use in session" is clicked
+    useInSessionBtn.addEventListener('click', function() {
+        clientPopup.style.display = 'flex';
+    });
+    
+    // Close popup when close button is clicked
+    closePopup.addEventListener('click', function() {
+        clientPopup.style.display = 'none';
+    });
+    
+    // Handle client selection
+    clientCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Remove selected class from all cards
+            clientCards.forEach(c => c.classList.remove('selected'));
+            
+            // Add selected class to clicked card
+            this.classList.add('selected');
+            
+            // Store selected client ID
+            selectedClientInput.value = this.getAttribute('data-client-id');
+            
+            // Enable the create plan button
+            createPlanBtn.disabled = false;
+        });
+    });
+});
+</script>
+{% endblock %} 
